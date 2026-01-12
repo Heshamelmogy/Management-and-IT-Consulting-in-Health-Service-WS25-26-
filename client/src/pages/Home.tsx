@@ -1,3 +1,4 @@
+// Home page component - displays user feed and posts
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Post from '../components/Post';
