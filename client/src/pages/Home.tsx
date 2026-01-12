@@ -59,7 +59,7 @@ const Home: React.FC = () => {
     <div className="max-w-4xl mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Welcome back to pp, {user?.username}!
+          Welcome back to .., {user?.username}!
         </h1>
         <p className="text-gray-600">
           Share your fitness journey and encourage others on their path to a healthier lifestyle.
