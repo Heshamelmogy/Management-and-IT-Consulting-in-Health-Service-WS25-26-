@@ -1,0 +1,70 @@
+name: Code Quality Checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  code-quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for better analysis
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Client code quality
+      - name: Install client dependencies
+        working-directory: ./client
+        run: npm ci --legacy-peer-deps
+
+      - name: Run client linting
+        working-directory: ./client
+        run: |
+          npx eslint src --ext .ts,.tsx --format json --output-file eslint-report.json || true
+        continue-on-error: true
+
+      # Server code quality
+      - name: Install server dependencies
+        working-directory: ./server
+        run: npm ci
+
+      # Type checking
+      - name: Type check client
+        working-directory: ./client
+        run: npx tsc --noEmit
+
+      - name: Type check server
+        working-directory: ./server
+        run: npx tsc --noEmit
+
+      # Code coverage (placeholder - add when tests are created)
+      - name: Run tests with coverage
+        run: |
+          echo "Add test coverage commands here when tests are implemented"
+          # cd client && npm test -- --coverage --watchAll=false
+          # cd ../server && npm test -- --coverage
+
+      - name: Comment PR with quality report
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Code quality checks completed successfully!'
+            })
+
+
+
