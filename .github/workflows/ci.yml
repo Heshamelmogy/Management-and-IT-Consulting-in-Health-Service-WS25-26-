@@ -10,7 +10,7 @@ jobs:
   # Lint and build client
   client:
     name: Client - Lint & Build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
       - name: Checkout code
@@ -51,7 +51,7 @@ jobs:
   # Lint and build server
   server:
     name: Server - Lint & Build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -86,7 +86,7 @@ jobs:
   # Integration tests (placeholder - add when tests are created)
   integration:
     name: Integration Tests
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [client, server]
     if: false  # Set to true when integration tests are added
     
@@ -112,7 +112,7 @@ jobs:
   # Security audit
   security:
     name: Security Audit
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code

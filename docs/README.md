@@ -34,7 +34,7 @@ When updating documentation:
 
 ---
 
-**Last Updated:** [Current Date]
+**Last Updated:** 
 
 
 
