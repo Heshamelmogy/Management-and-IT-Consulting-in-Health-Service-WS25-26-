@@ -78,9 +78,9 @@ jobs:
 
       - name: Deploy to Staging (Render)
         run: |
-          echo "✅ Code pushed to GitHub - Render will automatically deploy"
-          echo "🌐 Staging URL: https://management-and-it-consulting-in-health.onrender.com"
-          echo "📦 Render is configured for automatic deployment from GitHub"
+          echo " Code pushed to GitHub - Render will automatically deploy"
+          echo " Staging URL: https://management-and-it-consulting-in-health.onrender.com"
+          echo " Render is configured for automatic deployment from GitHub"
 
   # Deploy to production (only on main branch or version tags)
   deploy-production:
@@ -101,17 +101,17 @@ jobs:
 
       - name: Deploy to Production (Render)
         run: |
-          echo "✅ Code pushed to GitHub - Render will automatically deploy"
-          echo "🌐 Production URL: https://management-and-it-consulting-in-health.onrender.com"
-          echo "📦 Render is configured for automatic deployment from GitHub"
-          echo "⏳ Deployment typically takes 2-5 minutes"
+          echo " Code pushed to GitHub - Render will automatically deploy"
+          echo " Production URL: https://management-and-it-consulting-in-health.onrender.com"
+          echo " Render is configured for automatic deployment from GitHub"
+          echo " Deployment typically takes 2-5 minutes"
           
       - name: Verify Deployment
         run: |
           echo "Waiting for Render deployment to complete..."
           sleep 10
-          echo "✅ Deployment triggered - check Render dashboard for status"
-          echo "🔗 Monitor at: https://dashboard.render.com"
+          echo " Deployment triggered - check Render dashboard for status"
+          echo " Monitor at: https://dashboard.render.com"
 
       - name: Create GitHub Release (on tag)
         if: startsWith(github.ref, 'refs/tags/v')
